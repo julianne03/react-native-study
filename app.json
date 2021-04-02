@@ -1,0 +1,12 @@
+{
+  "name": "react-native-study",
+  "displayName": "react-native-study",
+  "expo": {
+    "name": "react-native-study",
+    "slug": "react-native-study",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
