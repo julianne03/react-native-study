@@ -16,12 +16,18 @@ const App = () => {
     ])
   }
 
+  // todo를 remove할 때 사용하는 함수
+  const onRemove = id => e => {
+    // 각 아이템의 고유 id를 받아와서 해당 id를 가진 아이템 객체만 제외하고 새로운 배열을 만든다.
+    setTodos(todos.filter(todo => todo.id !== id));
+  }
+
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.appTitle}>Hello Todolist</Text>
       <View style={styles.card}>
         <TodoInsert onAddTodo={addTodo} />
-        <TodoList todos={todos} />
+        <TodoList todos={todos} onRemove={onRemove} />
       </View>
     </SafeAreaView>
   );
