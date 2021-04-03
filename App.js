@@ -12,8 +12,9 @@ const App = () => {
     // 이전의 todo 값과 id, value, checked 속성을 변경해줌.
     setTodos([
       ...todos,
-      {id: Math.random.toString(), textValue: text, checked: false},
+      {id: Math.random().toString(), textValue: text, checked: false},
     ])
+    console.log(todos);
   }
 
   // todo를 remove할 때 사용하는 함수
@@ -22,12 +23,21 @@ const App = () => {
     setTodos(todos.filter(todo => todo.id !== id));
   }
 
+  // 체크 버튼을 누르면 작동하는(완료 체크 표시를 하는) 함수
+  const onToggle = id => e => {
+    setTodos(
+      todos.map(todo => 
+        todo.id === id ? { ...todo, checked: !todo.checked } : todo,
+        )
+    )
+  }
+
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.appTitle}>Hello Todolist</Text>
       <View style={styles.card}>
         <TodoInsert onAddTodo={addTodo} />
-        <TodoList todos={todos} onRemove={onRemove} />
+        <TodoList todos={todos} onRemove={onRemove} onToggle={onToggle} />
       </View>
     </SafeAreaView>
   );
