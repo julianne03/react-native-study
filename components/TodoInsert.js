@@ -1,17 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button, StyleSheet, TextInput, View } from 'react-native';
 
-const TodoInsert = () => {
+const TodoInsert = ({onAddTodo}) => {
+    // newTodoItem : 새로 입력한 텍스트의 상태를 나타내고, 
+    // setNewTodoItem : newTodoItem을 업데이트하는 함수
+    const [newTodoItem, setNewTodoItem] = useState('');
+
+    const todoInputHandler = newTodo => {
+        setNewTodoItem(newTodo);
+    }
+    
+    // add 버튼을 눌렀을 때 동작하는 이벤트 핸들러
+    const addTodoHandler = () => {
+        onAddTodo(newTodoItem);
+        setNewTodoItem('');
+    }
+
     return (
         <View style={styles.inputContainer}>
             <TextInput
                 style={styles.input}
                 placeholder="Add an item!"
                 placeholderTextColor={'#999'}
+                onChangeText={todoInputHandler}
+                value={newTodoItem}
                 autoCorrect={false}
             />
             <View style={styles.button}>
-                <Button title={'ADD'} />
+                <Button title={'ADD'} onPress={addTodoHandler} />
             </View>
         </View>
     )

@@ -2,7 +2,7 @@ import React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
 
-const TodoListItem = () => {
+const TodoListItem = ({textValue, id, checked}) => {
   return (
     <View style={styles.container}>
       <TouchableOpacity>
@@ -11,12 +11,12 @@ const TodoListItem = () => {
         </View>
       </TouchableOpacity>
       <Text style={[styles.text, styles.strikeText]}>
-        Items will be shown here
+        {textValue }
       </Text>
       <TouchableOpacity style={styles.buttonContainer}>
-        <View>
-            <Icon name="delete" size={30} color="#ff0000" />
-        </View>
+        <Text style={styles.buttonText}>
+          <Icon name="delete" size={30} color="#e33057" />
+        </Text>
       </TouchableOpacity>
       
     </View>

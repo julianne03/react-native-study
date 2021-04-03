@@ -1,15 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import TodoInsert from './components/TodoInsert';
 import TodoList from './components/TodoList';
 
 const App = () => {
+
+  const [todos, setTodos] = useState([]);
+
+  // todo를 add할 때 사용하는 함수
+  const addTodo = text => {
+    // 이전의 todo 값과 id, value, checked 속성을 변경해줌.
+    setTodos([
+      ...todos,
+      {id: Math.random.toString(), textValue: text, checked: false},
+    ])
+  }
+
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.appTitle}>Hello Todolist</Text>
       <View style={styles.card}>
-        <TodoInsert />
-        <TodoList />
+        <TodoInsert onAddTodo={addTodo} />
+        <TodoList todos={todos} />
       </View>
     </SafeAreaView>
   );
