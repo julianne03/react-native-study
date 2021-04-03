@@ -1,6 +1,5 @@
 import React from 'react';
 import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
-import { ScrollView, TextInput } from 'react-native-gesture-handler';
 import TodoInsert from './components/TodoInsert';
 import TodoList from './components/TodoList';
 
